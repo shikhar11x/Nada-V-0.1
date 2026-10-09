@@ -115,6 +115,8 @@ class _FieldsCard extends StatelessWidget {
         border: Border.all(color: AppColors.border),
       ),
       child: Column(
+        // Without stretch, each row shrinks to its text and gets centred.
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           for (var i = 0; i < fields.length; i++) ...[
             if (i > 0) const Divider(),
