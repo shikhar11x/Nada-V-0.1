@@ -14,22 +14,20 @@ abstract class ProfileRepository {
 
 class HttpProfileRepository implements ProfileRepository {
   HttpProfileRepository({
-    required http.Client client,
+    required this.client,
     Uri? url,
-    Duration timeout = const Duration(seconds: 15),
-  })  : _client = client,
-        _url = url ?? Uri.parse(AppConfig.profilesUrl),
-        _timeout = timeout;
+    this.timeout = const Duration(seconds: 15),
+  }) : _url = url ?? Uri.parse(AppConfig.profilesUrl);
 
-  final http.Client _client;
+  final http.Client client;
   final Uri _url;
-  final Duration _timeout;
+  final Duration timeout;
 
   @override
   Future<List<Profile>> fetchProfiles() async {
     final http.Response response;
     try {
-      response = await _client.get(_url).timeout(_timeout);
+      response = await client.get(_url).timeout(timeout);
     } on TimeoutException catch (e) {
       throw AppException(
         'The request timed out. Please check your connection and try again.',
@@ -62,7 +60,9 @@ class HttpProfileRepository implements ProfileRepository {
     }
 
     if (decoded is! Map<String, dynamic> || decoded['profiles'] is! List) {
-      throw const AppException('The profile data was not in the expected format.');
+      throw const AppException(
+        'The profile data was not in the expected format.',
+      );
     }
 
     final profiles = <Profile>[];
