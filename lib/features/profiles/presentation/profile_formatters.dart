@@ -56,3 +56,72 @@ String profileSemanticsLabel(Profile p) {
   );
   return parts.join(', ');
 }
+
+typedef ProfileField = ({String label, String value});
+
+const Set<String> _knownKeys = {
+  'id',
+  'name',
+  'age',
+  'gender',
+  'city',
+  'community',
+  'profession',
+  'education',
+  'degree',
+  'connected_through',
+  'about',
+};
+
+/// "F" -> "Female", "M" -> "Male". Anything else is shown as given.
+String? genderLabel(String? gender) {
+  if (gender == null) return null;
+  switch (gender.trim().toUpperCase()) {
+    case 'F':
+      return 'Female';
+    case 'M':
+      return 'Male';
+    default:
+      return gender;
+  }
+}
+
+/// "marital_status" -> "Marital status".
+String humanizeKey(String key) {
+  final words = key.split(RegExp(r'[_\s]+')).where((w) => w.isNotEmpty);
+  if (words.isEmpty) return key;
+  final text = words.join(' ');
+  return text[0].toUpperCase() + text.substring(1);
+}
+
+/// Label/value pairs for the details card. Absent fields are skipped, so the
+/// UI never shows placeholder text. `about` and `connected_through` have their
+/// own sections and are not listed here.
+List<ProfileField> profileFields(Profile p) {
+  final fields = <ProfileField>[];
+
+  void add(String label, String? value) {
+    if (value == null || value.trim().isEmpty) return;
+    fields.add((label: label, value: value));
+  }
+
+  add('Age', p.age?.toString());
+  add('Gender', genderLabel(p.gender));
+  add('City', p.city);
+  add('Community', p.community);
+  add('Profession', p.profession);
+  add('Education', p.education);
+  final degree = p.degree;
+  add('Degree', degree == null ? null : ordinal(degree));
+
+  // Any field in the source JSON that this app does not know about yet.
+  p.raw.forEach((key, value) {
+    if (_knownKeys.contains(key)) return;
+    if (value is String || value is num || value is bool) {
+      add(humanizeKey(key), value.toString());
+    }
+  });
+
+  add('Profile ID', p.id.toString());
+  return fields;
+}
