@@ -9,7 +9,7 @@ class AppColors {
   static const cardRaised = Color(0xFF262327); // avatars, icon buttons
   static const border = Color(0xFF332F34); // hairlines
 
-  static const plum = Color(0xFF702C66); // primary buttons, badges
+  static const plum = Color(0xFF66295D); // primary buttons, badges
   static const plumLight = Color(0xFFD9A3D2); // plum-family text on dark
   static const plumTint = Color(0xFF2A1A28); // tinted card background
   static const plumBorder = Color(0xFF4A2A45);

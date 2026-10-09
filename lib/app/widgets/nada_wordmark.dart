@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:nada/app/theme/app_theme.dart';
 
-/// Typographic wordmark. Not an official logo, just styled text.
+/// Logo mark + typographic "NADA".
 class NadaWordmark extends StatelessWidget {
   const NadaWordmark({super.key, this.size = 28});
 
@@ -13,10 +13,18 @@ class NadaWordmark extends StatelessWidget {
     return Semantics(
       label: 'NADA',
       excludeSemantics: true,
-      child: Column(
+      child: Row(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Image.asset(
+            'assets/images/logo_mark.png',
+            width: size * 1.25,
+            height: size * 1.25,
+            excludeFromSemantics: true,
+            // If the asset is ever missing, show the text alone, not a crash.
+            errorBuilder: (_, _, _) => const SizedBox.shrink(),
+          ),
+          SizedBox(width: size * 0.4),
           Text(
             'NADA',
             style: TextStyle(
@@ -26,15 +34,6 @@ class NadaWordmark extends StatelessWidget {
               letterSpacing: size * 0.18,
               height: 1,
               color: AppColors.cream,
-            ),
-          ),
-          SizedBox(height: size * 0.28),
-          Container(
-            width: size * 1.1,
-            height: 3,
-            decoration: BoxDecoration(
-              color: AppColors.plumLight,
-              borderRadius: BorderRadius.circular(2),
             ),
           ),
         ],
