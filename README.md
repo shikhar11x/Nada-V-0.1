@@ -4,6 +4,13 @@ A two-screen Flutter app for the NADA Network Flutter intern take-home. It
 loads 24 profiles from a remote JSON file, lets you search them, and shows how
 each person is connected to you.
 
+## Download APK
+
+**[Download NADA APK (v0.1)](https://github.com/shikhar11x/Nada_Apps/releases/download/V-0.1/app-release.apk)**
+
+Download and install the APK on your Android device to try the app.
+
+
 ## Screenshots
 
 Captured on an Android emulator.
