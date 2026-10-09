@@ -114,4 +114,3 @@ lib/
 - **Claude (Anthropic)** helped plan the architecture and UI direction, wrote a
   first draft of much of the code and tests, and drafted this README. I ran,
   reviewed and edited the code, and I can explain every part of it.
-<edit this section so it matches what you actually did>
