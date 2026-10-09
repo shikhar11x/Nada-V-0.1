@@ -22,14 +22,21 @@ class NadaWordmark extends StatelessWidget {
             style: TextStyle(
               fontFamily: AppTheme.serifFamily,
               fontSize: size,
-              fontWeight: FontWeight.w700,
-              letterSpacing: size * 0.2,
+              fontWeight: FontWeight.w800,
+              letterSpacing: size * 0.18,
               height: 1,
-              color: AppColors.burgundy,
+              color: AppColors.cream,
             ),
           ),
-          SizedBox(height: size * 0.25),
-          Container(width: size * 1.4, height: 2, color: AppColors.gold),
+          SizedBox(height: size * 0.28),
+          Container(
+            width: size * 1.1,
+            height: 3,
+            decoration: BoxDecoration(
+              color: AppColors.plumLight,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
         ],
       ),
     );

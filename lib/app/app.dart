@@ -11,7 +11,7 @@ class NadaApp extends StatelessWidget {
     return MaterialApp(
       title: 'NADA',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.light(),
+      theme: AppTheme.dark(),
       home: const ProfileListScreen(),
     );
   }
