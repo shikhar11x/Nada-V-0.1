@@ -4,6 +4,18 @@ A two-screen Flutter app for the NADA Network Flutter intern take-home. It
 loads 24 profiles from a remote JSON file, lets you search them, and shows how
 each person is connected to you.
 
+## Screenshots
+
+Captured on an Android emulator.
+
+| Discover | Search | Profile details |
+|---|---|---|
+| <img src="docs/screenshots/01-discover-list.png" width="240" alt="Discover list"> | <img src="docs/screenshots/02-search.png" width="240" alt="Search filtering the list"> | <img src="docs/screenshots/03-details.png" width="240" alt="Profile details with the connection card"> |
+
+| No connection yet | Error and retry | Splash |
+|---|---|---|
+| <img src="docs/screenshots/04-details-no-connection.png" width="240" alt="Details for a profile with no connection"> | <img src="docs/screenshots/05-error-retry.png" width="240" alt="Error state with Retry button"> | <img src="docs/screenshots/06-splash.png" width="240" alt="Splash screen"> |
+
 ## Features
 
 - Fetches profiles over HTTPS at runtime (no bundled copy of the data)
